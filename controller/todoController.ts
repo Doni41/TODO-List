@@ -1,8 +1,12 @@
 import { Request, Response, NextFunction } from "express";
+import { ToDoItem } from '../model/todo';
 
 export const postAddProduct = (req: Request, res: Response, next: NextFunction) => {
-    const jsonData = JSON.stringify(req.body); 
+    const jsonData = req.body; 
+    const reqData = JSON.stringify(req.body.todoItem);
     res.status(201);
-    console.log(jsonData);
+    const newToDoItem = new ToDoItem(reqData);
+    //console.log(newToDoItem);
+    newToDoItem.save();
     res.redirect('/');
   };

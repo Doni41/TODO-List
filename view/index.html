@@ -12,7 +12,7 @@
     <div id="todo-app">
         <label class="todo-label" for="new-todo">What do you want to do today?</label>
         <form id="todo-form" action="" method="POST">
-            <input name="todo-item" type="text" type="submit" id="new-todo" class="todo-input">
+            <input name="todoItem" type="text" type="submit" id="new-todo" class="todo-input">
         </form>
         <ul id="todo-list"></ul>
         <div id="todo-stats"></div>
@@ -50,7 +50,7 @@
 
     <!-- Include YUI on the page if you haven't already. -->
     <script src="http://yui.yahooapis.com/3.11.0/build/yui/yui-min.js"></script>
-    <script src="/js/controller.js"></script>
+    <script src="/js/logger.js"></script>
 
     <script>
         YUI().use('event-focus', 'json', 'model', 'model-list', 'view', function (Y) {

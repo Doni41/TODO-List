@@ -21,6 +21,10 @@ export class ToDoList<Item> {
         return this.todoList;
     }
 
+    public static addItem() {
+        
+    }
+
     public static async fetchAll() {
         const p = path.join(
             path.dirname(__dirname),
