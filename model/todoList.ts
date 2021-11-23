@@ -17,6 +17,7 @@ export class ToDoList<Item> {
         return ToDoList.instance;
     }
 
+    /*
     public getItems() {
         return this.todoList;
     }
@@ -46,4 +47,5 @@ export class ToDoList<Item> {
             console.log(error);  
         };        
     }
+    */
 }

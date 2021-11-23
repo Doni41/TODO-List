@@ -12,7 +12,7 @@
     <div id="todo-app">
         <label class="todo-label" for="new-todo">What do you want to do today?</label>
         <form id="todo-form" action="" method="POST">
-            <input name="todoItem" type="text" type="submit" id="new-todo" class="todo-input">
+            <input name="todoItem" type="text" type="submit" id="new-todo" class="todo-input" placeholder="buy milk">
         </form>
         <ul id="todo-list"></ul>
         <div id="todo-stats"></div>
@@ -50,9 +50,11 @@
 
     <!-- Include YUI on the page if you haven't already. -->
     <script src="http://yui.yahooapis.com/3.11.0/build/yui/yui-min.js"></script>
-    <script src="/js/logger.js"></script>
+    <!-- <script src="/js/logger.js"></script> -->
+    <script src="/js/delete.js"></script>
 
     <script>
+
         YUI().use('event-focus', 'json', 'model', 'model-list', 'view', function (Y) {
             var TodoAppView, TodoList, TodoModel, TodoView;
 
@@ -174,6 +176,41 @@
             // changed, thanks to the list event handler we attached in the initializer
             // above.
             render: function () {
+ 
+                /*
+                const getPromiseFunction = async () => {
+                    try {
+                        const response = await fetch('/get-data');
+                        const data = await response.json();
+                        return Promise.all(data);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                }
+
+                
+                const getResultFunction = async () => {
+                    const result = await getPromiseFunction();
+                    return result;
+                }
+
+                async function mappingData (db, todoListFromJson) {
+                    (async() => {
+                    let tmp = await getResultFunction();
+                    for (let key in tmp) {
+                        db.push(tmp[key]);
+                        console.log(tmp[key]);
+                    }
+                    console.log(await getResultFunction());
+                })()
+
+                    db.forEach(element => {
+                        todoListFromJson.push(element.title);
+                    });
+                    return todoListFromJson;
+                }                
+                */
+
                 var todoList = this.todoList,
                     stats    = this.get('container').one('#todo-stats'),
                     numRemaining, numDone;
@@ -211,6 +248,7 @@
             // todo item is added to the list.
             add: function (e) {
                 var view = new TodoView({model: e.model});
+                console.log('model: ', e.model);
 
                 this.get('container').one('#todo-list').append(
                     view.render().get('container')
@@ -416,6 +454,28 @@
         // TodoModel and TodoList instances above use it to save and load items.
 
         function LocalStorageSync(key) {
+            /*
+            let db = [];
+
+            async function getData(todoList) {
+                try {
+                    const response = await fetch('/get-data');
+                    const data = await response.json();
+                    //return Promise.all(data);
+                    populateToDoList(data, todoList);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+
+            function populateToDoList (dataStorage, todoList) {
+                todoList = [];
+                for (key in data) {
+                    todoList.push(data[key]);
+                }
+            }
+            */
+
             var localStorage;
 
             if (!key) {
@@ -429,6 +489,8 @@
             // Try to retrieve existing data from localStorage, if there is any.
             // Otherwise, initialize `data` to an empty object.
             var data = Y.JSON.parse((localStorage && localStorage.getItem(key)) || '{}');
+            //getData(data);
+            //console.log(data);
 
             // Delete a model with the specified id.
             function destroy(id) {
@@ -444,6 +506,7 @@
 
             // Generate a unique id to assign to a newly-created model.
             function generateId() {
+                /*
                 var id = '',
                     i  = 4;
 
@@ -451,7 +514,9 @@
                     id += (((1 + Math.random()) * 0x10000) | 0)
                             .toString(16).substring(1);
                 }
-
+                */
+                id = new Date();
+                console.log('id' + id);
                 return id;
             }
 

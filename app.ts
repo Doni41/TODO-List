@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 
-app.set('veiw engine', 'html')
+app.set('view engine', 'html')
 app.use(express.static(path.join(__dirname, "public")));
 
 
