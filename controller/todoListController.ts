@@ -12,10 +12,13 @@ export const getDatabase = async (req: Request, res: Response, next: NextFunctio
     let data;
     try {
             const data = await fs.promises.readFile(p, 'utf-8');
-            await res.setHeader('Content-Type', 'application/json');
-            await res.send(data);        
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).send(data);   
+            //await res.redirect('/');
             return data;
     } catch(err) {
-        console.log(err);
+        console.log('error: ' + err);
     }    
 };
+
+

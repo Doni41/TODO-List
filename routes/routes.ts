@@ -13,11 +13,11 @@ export const getIndexPage =  router.get('/', async (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'view', 'index.html'));
 });
 
-export const postIndexPage = router.post('', postAddItem);
+export const postIndexPage = router.post('/', postAddItem);
 
 export const getData = router.get('/get-data', getDatabase);
 
-export const deleteData = router.post('/delete-items', deleteItems);
+export const deleteData = router.use('/delete-items', deleteItems);
 
 module.exports = router;
 

@@ -51,7 +51,8 @@
     <!-- Include YUI on the page if you haven't already. -->
     <script src="http://yui.yahooapis.com/3.11.0/build/yui/yui-min.js"></script>
     <!-- <script src="/js/logger.js"></script> -->
-    <script src="/js/delete.js"></script>
+    <script src="js/delete.js"></script>
+    <script src ="js/storageManipulator.js"></script>
 
     <script>
 
@@ -176,41 +177,6 @@
             // changed, thanks to the list event handler we attached in the initializer
             // above.
             render: function () {
- 
-                /*
-                const getPromiseFunction = async () => {
-                    try {
-                        const response = await fetch('/get-data');
-                        const data = await response.json();
-                        return Promise.all(data);
-                    } catch (err) {
-                        console.log(err);
-                    }
-                }
-
-                
-                const getResultFunction = async () => {
-                    const result = await getPromiseFunction();
-                    return result;
-                }
-
-                async function mappingData (db, todoListFromJson) {
-                    (async() => {
-                    let tmp = await getResultFunction();
-                    for (let key in tmp) {
-                        db.push(tmp[key]);
-                        console.log(tmp[key]);
-                    }
-                    console.log(await getResultFunction());
-                })()
-
-                    db.forEach(element => {
-                        todoListFromJson.push(element.title);
-                    });
-                    return todoListFromJson;
-                }                
-                */
-
                 var todoList = this.todoList,
                     stats    = this.get('container').one('#todo-stats'),
                     numRemaining, numDone;
@@ -454,27 +420,7 @@
         // TodoModel and TodoList instances above use it to save and load items.
 
         function LocalStorageSync(key) {
-            /*
-            let db = [];
-
-            async function getData(todoList) {
-                try {
-                    const response = await fetch('/get-data');
-                    const data = await response.json();
-                    //return Promise.all(data);
-                    populateToDoList(data, todoList);
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-
-            function populateToDoList (dataStorage, todoList) {
-                todoList = [];
-                for (key in data) {
-                    todoList.push(data[key]);
-                }
-            }
-            */
+            
 
             var localStorage;
 
@@ -506,7 +452,7 @@
 
             // Generate a unique id to assign to a newly-created model.
             function generateId() {
-                /*
+                
                 var id = '',
                     i  = 4;
 
@@ -514,9 +460,8 @@
                     id += (((1 + Math.random()) * 0x10000) | 0)
                             .toString(16).substring(1);
                 }
-                */
-                id = new Date();
-                console.log('id' + id);
+
+
                 return id;
             }
 
@@ -575,7 +520,6 @@
                 }
             };
         }
-
 
         // -- Start your engines! ------------------------------------------------------
 

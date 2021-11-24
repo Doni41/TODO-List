@@ -16,36 +16,4 @@ export class ToDoList<Item> {
         }
         return ToDoList.instance;
     }
-
-    /*
-    public getItems() {
-        return this.todoList;
-    }
-
-    public static addItem() {
-        
-    }
-
-    public static async fetchAll() {
-        const p = path.join(
-            path.dirname(__dirname),
-            '..',
-            'data',
-            'todos.json'
-          );
-        try {
-            const fileContent = await fs.readFile(p, (err, fileContent) => {
-                if (err) {
-                    throw new Error('Cannot open todos.json');
-                }
-                return Buffer.from(fileContent);
-            });
-
-            console.log(fileContent);
-            
-        } catch (error) {
-            console.log(error);  
-        };        
-    }
-    */
 }

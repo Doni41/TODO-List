@@ -13,15 +13,15 @@ const getIndexRoute = getIndexPage;
 const postIndexRoute = postIndexPage;
 const errorController = getErrorPage;
 const router = require('./routes/routes');
+const cors = require('cors');
 
 const app = express();
+app.set('view engine', 'html')
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-
-
-app.set('view engine', 'html')
+//app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
-
 
 app.use(router);
 app.use('/', errorController);

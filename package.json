@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Doni41/TODO-List#readme",
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "keypress": "^0.2.1",
     "node-localstorage": "^2.2.1"
